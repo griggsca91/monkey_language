@@ -29,7 +29,7 @@ func TestNextToken(t *testing.T) {
 	`
 
 	tests := []struct {
-		expectedType    token.TokenType
+		expectedType    token.Type
 		expectedLiteral string
 	}{
 		{token.Let, "let"},
@@ -81,7 +81,7 @@ func TestNextToken(t *testing.T) {
 		{token.Int, "5"},
 		{token.Semicolon, ";"},
 
-		{token.IF, "if"},
+		{token.If, "if"},
 		{token.LParen, "("},
 		{token.Int, "5"},
 		{token.Lt, "<"},
