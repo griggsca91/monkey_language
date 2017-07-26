@@ -2,11 +2,16 @@ package repl
 
 import (
 	"bufio"
+	"fmt"
+	"monkey/token"
+	"monkey/lexer"
+	"io"
 )
 
 
 const prompt = ">>"
 
+// Start function begins the REPL
 func Start(in io.Reader, out io.Writer) {
 	scanner := bufio.NewScanner(in)
 
@@ -17,6 +22,11 @@ func Start(in io.Reader, out io.Writer) {
 			return
 		}
 
-		
+		line := scanner.Text()
+		l := lexer.New(line)
+
+		for tok := l.NextToken(); tok.Type != token.EOF; tok = l.NextToken() {
+			fmt.Printf("%+v\n", tok)
+		}
 	}
 }
